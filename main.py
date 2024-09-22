@@ -2,7 +2,7 @@ import pygame
 from constants import *
 from player import *
 from asteroid import *
-from asteroidfield import*
+from asteroidfield import *
 
 def main():
     pygame.init()
@@ -26,15 +26,17 @@ def main():
             if event.type == pygame.QUIT:
                 return
                       
-        pygame.Surface.fill(screen, (0,0,0))
-
         for obj in updatable:
             obj.update(dt)
+
+        pygame.Surface.fill(screen, "black")
 
         for obj in drawable:
             obj.draw(screen)          
 
-        pygame.display.flip()        
+        pygame.display.flip()
+
+        # limit the framerate to 60 FPS        
         dt = clock.tick(60) / 1000
 
 
